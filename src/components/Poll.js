@@ -1,6 +1,6 @@
 import React from "react";
 
-const Poll = (props) => {
+const Poll = ({position, data}) => {
     return (
         <div>Poll</div>
     );
