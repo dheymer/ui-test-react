@@ -142,13 +142,59 @@
 }
 
 @media screen and (min-width: 768px) {
-  
+  .previous-polls.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    overflow: hidden;
+  }
+
+  .previous-polls.grid .poll {
+    width: 100%;
+    grid-row-end: span 2;
+  }
+
+  .previous-polls.grid .poll .gradient-bg .poll-content {
+    top: 4rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
-  
+  .previous-polls.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .previous-polls.grid .poll {
+    width: 100%;
+    grid-row-end: span 2;
+  }
+
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block h2{
+    font-size: 2rem;
+  }
+
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block .description {
+    font-size: 14px;
+  }
+
+  .previous-polls.grid .poll .votation-results {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 1100px) {
-  
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block h2{
+    font-size: 20px;
+  }
+
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block .description,
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block .bottom-note {
+    font-size: 14px;
+  }
+
+  .previous-polls.grid .poll .gradient-bg .poll-content .information-block .description p {
+    height: 1.9rem;
+  }
 }
