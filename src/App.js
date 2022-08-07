@@ -6,6 +6,14 @@ import PollsData from './assets/data';
 class App extends React.Component {
   state = {displayMode: 'grid', pollsData: PollsData};
 
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
   /**
    * Select the layout between grid or list
    * 
@@ -14,6 +22,14 @@ class App extends React.Component {
   onSelectChange = (event) => {
     this.setState({displayMode: event.target.value});
   }
+
+  updateDimensions = () => {
+    if (window.innerWidth < 768) {
+      this.setState({displayMode: 'grid'});
+    } else {
+      this.setState({displayMode: document.getElementById('display-mode').value})
+    }
+  };
 
   render() {
     return (
