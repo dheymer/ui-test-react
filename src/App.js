@@ -6,6 +6,11 @@ import PollsData from './assets/data';
 class App extends React.Component {
   state = {displayMode: 'grid', pollsData: PollsData};
 
+  /**
+   * Select the layout between grid or list
+   * 
+   * @memberOf App
+   */
   onSelectChange = (event) => {
     this.setState({displayMode: event.target.value});
   }

@@ -2,8 +2,10 @@ import React from "react";
 import Poll from "./Poll";
 
 const PreviousPolls = ({ displayMode, pollsData }) => {
+    /**
+     * Building polls list
+     */
     const polls = pollsData.data.map((item, index) => {
-        console.log(item);
         return (
             <React.Fragment key={index} >
                 <Poll 
