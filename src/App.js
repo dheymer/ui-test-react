@@ -1,8 +1,14 @@
 import './App.css';
 import React from 'react';
 import PreviousPolls from './components/PreviousPolls';
+import PollsData from './assets/data';
 
 class App extends React.Component {
+  state = {displayMode: 'grid', pollsData: PollsData};
+
+  onSelectChange = (event) => {
+    this.setState({displayMode: event.target.value});
+  }
 
   render() {
     return (
@@ -14,7 +20,10 @@ class App extends React.Component {
             <option value='list'>List</option>
           </select>
         </div>
-        <PreviousPolls />
+        <PreviousPolls 
+          displayMode={this.state.displayMode}
+          pollsData={this.state.pollsData}
+        />
       </div>
     );
   }

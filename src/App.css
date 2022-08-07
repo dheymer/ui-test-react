@@ -7,3 +7,26 @@
   width: 120px;
   height: 2rem;
 }
+
+.previous-rulings.grid {
+  display: flex;
+  overflow-x: scroll;
+}
+
+@media screen and (max-width: 767px) {
+  .App .app_title select {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  
+}
+
+@media screen and (min-width: 992px) {
+  
+}
+
+@media screen and (min-width: 1100px) {
+  
+}
