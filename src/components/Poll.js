@@ -20,7 +20,7 @@ const Poll = ({position, data}) => {
 
     /**
      * Obtains the relative time (days ago) from a specific date
-     * @param {*} timestampDate The date
+     * @param {Date} timestampDate The date
      * @returns string with the time passed from the date, in days
      */
     const relativeDays = (timestampDate) => {
@@ -32,6 +32,10 @@ const Poll = ({position, data}) => {
         return relativeTime.format(diffDays, 'day');
     };
 
+    /**
+     * Sets the value of the vote
+     * @param {string} selectedVote the user's choice
+     */
     const setVote = (selectedVote) => {
         vote = selectedVote;
         document.getElementById(`vote-${position}-${selectedVote}`).classList.add('selected');
