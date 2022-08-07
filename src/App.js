@@ -23,6 +23,11 @@ class App extends React.Component {
     this.setState({displayMode: event.target.value});
   }
 
+  /**
+   * Check resolution to switch the layout correctly
+   * 
+   * @memberOf App
+   */
   updateDimensions = () => {
     if (window.innerWidth < 768) {
       this.setState({displayMode: 'grid'});
