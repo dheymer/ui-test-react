@@ -6,6 +6,18 @@ const Poll = ({position, data}) => {
     const dislikeRate = ((data.votes.negative / totalVotes) * 100).toFixed(1);  // Percentage of negative votes
 
     /**
+     * Obtains the general opinion based on votes
+     * @returns JSX with the right image to show if users like or dislike the celebrity
+     */
+    const generalResult = () => {
+        return (
+            (likeRate >= dislikeRate) ?
+                <img src="../assets/img/thumbs-up.svg" /> :
+                <img src="../assets/img/thumbs-down.svg" />
+        );
+    };
+
+    /**
      * Obtains the relative time (days ago) from a specific date
      * @param {*} timestampDate The date
      * @returns string with the time passed from the date, in days
@@ -23,6 +35,9 @@ const Poll = ({position, data}) => {
         <div className="poll" style={{ backgroundImage: `url('../assets/img/${data.picture}')` }}>
             <div className="gradient-bg">
                 <div className="poll-content">
+                    <span className={`general-result ${((likeRate >= dislikeRate) ? 'like' : 'dislike')}`}>
+                        {generalResult()}
+                    </span>
                     <div className="information-block">
                         <h2>{data.name}</h2>
                         <div className="description">
