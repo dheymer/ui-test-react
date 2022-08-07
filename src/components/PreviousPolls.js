@@ -1,7 +1,7 @@
 import React from "react";
 import Poll from "./Poll";
 
-const PreviousPolls = ({ displayMode, pollsData }) => {
+const PreviousPolls = ({ displayMode, pollsData, onVoteAdded }) => {
     /**
      * Building polls list
      */
@@ -11,6 +11,7 @@ const PreviousPolls = ({ displayMode, pollsData }) => {
                 <Poll 
                     position={index} 
                     data={item} 
+                    onVoteAdded={onVoteAdded} 
                 />
             </React.Fragment>
         );

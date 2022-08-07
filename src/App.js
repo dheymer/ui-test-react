@@ -5,6 +5,7 @@ import PollsData from './assets/data';
 
 class App extends React.Component {
   state = {displayMode: 'grid', pollsData: PollsData};
+  auxData = PollsData;                                // Auxiliar data to help updating the state
 
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
@@ -36,6 +37,16 @@ class App extends React.Component {
     }
   };
 
+  /**
+   * Add the vote to the data in the state
+   * 
+   * @memberOf App
+   */
+  onVoteAdded = (position, newData) => {
+    this.auxData.data[position] = newData;
+    this.setState({pollsData: this.auxData});
+  }
+
   render() {
     return (
       <div className="App">
@@ -49,6 +60,7 @@ class App extends React.Component {
         <PreviousPolls 
           displayMode={this.state.displayMode}
           pollsData={this.state.pollsData}
+          onVoteAdded={this.onVoteAdded}
         />
       </div>
     );
