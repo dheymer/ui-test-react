@@ -67,7 +67,6 @@ const Poll = ({position, data, onVoteAdded, justVoted}) => {
         }
         document.getElementById(`vote-${position}-dislike`).classList.remove('selected');
         document.getElementById(`vote-${position}-like`).classList.remove('selected');
-        console.log(data);
         data.lastUpdated = new Date().toISOString();
         onVoteAdded(itemIndex, data, choice);
     };
