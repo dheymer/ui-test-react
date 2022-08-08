@@ -9,6 +9,8 @@ class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
+    this.auxData = (!!window.localStorage.getItem('PollsData')) ? JSON.parse(window.localStorage.getItem('PollsData')) : PollsData;
+    this.setState({ pollsData: this.auxData });
   }
 
   componentWillUnmount() {
@@ -45,6 +47,7 @@ class App extends React.Component {
   onVoteAdded = (position, newData, selection) => {
     if (selection !== ''){
       this.auxData.data[position] = newData;
+      window.localStorage.setItem('PollsData', JSON.stringify(this.auxData));
       this.setState({pollsData: this.auxData, justVoted: position});
     } else {
       this.setState({justVoted: -1})
