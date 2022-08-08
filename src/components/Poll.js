@@ -1,6 +1,6 @@
 import React from "react";
 
-const Poll = ({position, data, onVoteAdded}) => {
+const Poll = ({position, data, onVoteAdded, justVoted}) => {
     const totalVotes = data.votes.negative + data.votes.positive;
     const likeRate = ((data.votes.positive / totalVotes) * 100).toFixed(1);     // Percentage of positive votes
     const dislikeRate = ((data.votes.negative / totalVotes) * 100).toFixed(1);  // Percentage of negative votes
@@ -32,6 +32,14 @@ const Poll = ({position, data, onVoteAdded}) => {
         return relativeTime.format(diffDays, 'day');
     };
 
+    let pollConfig = (justVoted) ? {
+            voteButton: 'Vote Again',
+            eyebrowMessage: 'Thank you for your vote'
+        } : {
+            voteButton: 'Vote Now',
+            eyebrowMessage: relativeDays(new Date(data.lastUpdated).getTime())
+        }
+
     /**
      * Sets the value of the vote
      * @param {string} selectedVote the user's choice
@@ -54,7 +62,9 @@ const Poll = ({position, data, onVoteAdded}) => {
         }
         document.getElementById(`vote-${position}-dislike`).classList.remove('selected');
         document.getElementById(`vote-${position}-like`).classList.remove('selected');
-        onVoteAdded(itemIndex, data);
+        console.log(data);
+        data.lastUpdated = new Date().toISOString();
+        onVoteAdded(itemIndex, data, choice);
     };
 
     return (
@@ -69,7 +79,7 @@ const Poll = ({position, data, onVoteAdded}) => {
                         <div className="description">
                             <p>{data.description}</p>
                         </div>
-                        <p className="bottom-note">{`${relativeDays(new Date(data.lastUpdated))} in `} <span style={{textTransform:'capitalize'}}>{data.category}</span></p>
+                        <p className="bottom-note">{`${pollConfig.eyebrowMessage} in `} <span style={{textTransform:'capitalize'}}>{data.category}</span></p>
                         <div className="vote-form">
                             <span id={`vote-${position}-like`} className="like" onClick={() => setVote('like')}>
                                 <img src="../assets/img/thumbs-up.svg" />
@@ -77,7 +87,7 @@ const Poll = ({position, data, onVoteAdded}) => {
                             <span id={`vote-${position}-dislike`} className="dislike" onClick={() => setVote('dislike')}>
                                 <img src="../assets/img/thumbs-down.svg" />
                             </span>
-                            <button onClick={() => onVoteClick(position, vote)}>Vote Now</button>
+                            <button onClick={() => onVoteClick(position, vote)}>{pollConfig.voteButton}</button>
                         </div>
                     </div>
                 </div>
