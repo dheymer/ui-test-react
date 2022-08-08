@@ -54,6 +54,11 @@ const Poll = ({position, data, onVoteAdded, justVoted}) => {
         }
     }
 
+    /**
+     * Sends the vote to update the state
+     * @param {number} itemIndex The index of the current poll object in the data array
+     * @param {string} choice The user's chioce for the vote
+     */
     const onVoteClick = (itemIndex, choice) => {
         if (choice === 'like') {
             data.votes.positive++;
