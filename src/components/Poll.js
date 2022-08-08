@@ -13,8 +13,8 @@ const Poll = ({position, data, onVoteAdded, justVoted}) => {
     const generalResult = () => {
         return (
             (likeRate >= dislikeRate) ?
-                <img src="../assets/img/thumbs-up.svg" /> :
-                <img src="../assets/img/thumbs-down.svg" />
+                <img src="../assets/img/thumbs-up.svg" alt="like" /> :
+                <img src="../assets/img/thumbs-down.svg" alt="dislike" />
         );
     };
 
@@ -87,10 +87,10 @@ const Poll = ({position, data, onVoteAdded, justVoted}) => {
                         <p className="bottom-note">{`${pollConfig.eyebrowMessage} in `} <span style={{textTransform:'capitalize'}}>{data.category}</span></p>
                         <div className="vote-form">
                             <span id={`vote-${position}-like`} className="like" onClick={() => setVote('like')}>
-                                <img src="../assets/img/thumbs-up.svg" />
+                                <img src="../assets/img/thumbs-up.svg" alt="like" />
                             </span>
                             <span id={`vote-${position}-dislike`} className="dislike" onClick={() => setVote('dislike')}>
-                                <img src="../assets/img/thumbs-down.svg" />
+                                <img src="../assets/img/thumbs-down.svg" alt="dislike" />
                             </span>
                             <button onClick={() => onVoteClick(position, vote)}>{pollConfig.voteButton}</button>
                         </div>
@@ -99,10 +99,10 @@ const Poll = ({position, data, onVoteAdded, justVoted}) => {
             </div>
             <div className="votation-results">
                 <div className="like" style={{width: `${likeRate}%`}}>
-                    <img src="../assets/img/thumbs-up.svg" /> {`${likeRate}%`}
+                    <img src="../assets/img/thumbs-up.svg"  alt="like" /> {`${likeRate}%`}
                 </div>
                 <div className="dislike" style={{width: `${dislikeRate}%`}}>
-                    <img src="../assets/img/thumbs-down.svg" /> {`${dislikeRate}%`}
+                    <img src="../assets/img/thumbs-down.svg"  alt="dislike" /> {`${dislikeRate}%`}
                 </div>
             </div>
         </div>
